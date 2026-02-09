@@ -17,7 +17,7 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                     <div class="card shadow  text-center" style="background-color: #cde2fc">
                        
-                        <img src="{{ asset('images/' . $p->image) }}" 
+                        <img src="{{ asset('image/' . $p->image) }}" 
                              alt="{{ $p->titre }}" 
                              class="card-img-top" 
                              style="height: 200px; object-fit: cover;">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             @endforeach
-            {{ $produits->links('pagination') }}
+            {{ $produits->links() }}
 
         @else
             <p class="text-center">Aucun produit dans cette catégorie.</p>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\AddProduitRequest;
+use App\Http\Requests\AddProductRequest;
 use App\Models\Produit;
 
 
@@ -13,7 +13,7 @@ public function create()
         return view('create'); 
     }
 
-public function store(AddProduitRequest $request)
+public function store(AddProductRequest $request)
 {
  // 1. Validation des champs
  // (elle est déjà effectuée automatiquement, mais on peutforcer le check)
@@ -42,7 +42,7 @@ public function store(AddProduitRequest $request)
  $produit->image = $imageName;
  $produit->save();
  // 5. Déplacer l’image dans le dossier public\images
- $request->file('image')->move(public_path('images'), $imageName);
+ $request->file('image')->move(public_path('image'), $imageName);
  // 6. Redirection avec un message flash de succès
  return back()->with('success', 'Vous avez ajouté un produit avec
 succès !');

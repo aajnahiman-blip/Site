@@ -1,29 +1,31 @@
 <?php
 
 namespace App\Providers;
-use Illuminate\Support\Facades\Schema ;
-use Illuminate\Support\Facades\View;
-use App\Models\Produit;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Schema; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
+    /* Register any application services.*/
     public function register(): void
     {
         //
     }
 
-    /**
+    /*
      * Bootstrap any application services.
      */
     public function boot(): void
     {
-       View::composer('*', function ($view) {
-        $categories = Produit::select('categorie')->distinct()->get();
-        $view->with('categories', $categories);
-    });
+         Schema::defaultStringLength(200); 
+         $categories = DB::table('produits')
+        ->select('categorie')
+        ->distinct()
+        ->get();
+
+        View::share('categori', $categories);
+        Paginator::useBootstrap();
     }
 }

@@ -8,8 +8,6 @@
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <title>@yield('title', 'Bienvenue')</title>
     <style>
@@ -150,6 +148,64 @@
         flex-wrap: wrap;
     }
 }
+/* ===== Dropdown Categories ===== */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown .nav-link {
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #1e293b;
+    min-width: 160px;
+    border-radius: 8px;
+    padding: 8px 0;
+    display: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.dropdown-menu li {
+    list-style: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #7caeeb;
+    color: #1e293b;
+}
+
+/* Desktop hover */
+.nav-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .nav-dropdown.active .dropdown-menu {
+        display: block;
+    }
+}
+
 
 /* ===== Footer ===== */
 .footer {

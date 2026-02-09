@@ -17,7 +17,7 @@ class ProduitController extends Controller
     }
     public function produits()
 {
-    $produits = Produit::paginate(8);
+    $produits = Produit::paginate(4);
     return view('produits', compact('produits'));
 }
 
@@ -25,7 +25,7 @@ class ProduitController extends Controller
     public function getProductsByCategorie(Request $rq)
     {
         $cat=$rq->route('cat');
-        $produits = Produit::where('categorie', $cat)->paginate(6);
+        $produits = Produit::where('categorie', $cat)->paginate(4);
 
         return view('Cat_produits',
                 ['produits' => $produits,

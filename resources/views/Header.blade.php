@@ -18,11 +18,17 @@
         <nav class="nav stcky-top">
             <a class="nav-link" href="/" class="">Accueil</a>
             <a class="nav-link" href="/produits">Produits</a>
-            <a class="nav-link" href="/produits/bague">Bague</a>
-            <a class="nav-link" href="/produits/collier">Collier</a>
-             <a class="nav-link" href="/produits/montre">Montre</a>
-             <a class="nav-link" href="/produits/bracelet">Bracelet</a>
-           
+      <div class="nav-dropdown">
+    <span class="nav-link">Catégories ▾</span>
+    <ul class="dropdown-menu">
+        <li><a href="/produits/bague">Bague</a></li>
+        <li><a href="/produits/collier">Collier</a></li>
+        <li><a href="/produits/montre">Montre</a></li>
+        <li><a href="/produits/bracelet">Bracelet</a></li>
+    </ul>
+</div>
+
+
              <a class="nav-link" href="{{ route('produits.create') }}">➕Ajouter un produit</a>
             <a class="nav-link"  href="/contact">Contact</a>
             {{-- <a href="/about">A propos</a> --}}
@@ -30,13 +36,25 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const nav = document.querySelector('.nav');
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const nav = document.querySelector('.nav');
 
-            mobileMenu.addEventListener('click', () => {
-                nav.classList.toggle('active');
-            });
-        });
-    </script>
+    // hamburger menu
+    mobileMenu.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+
+    // dropdown categories (mobile)
+    const dropdown = document.querySelector('.nav-dropdown');
+    const dropdownTitle = dropdown.querySelector('.nav-link');
+
+    dropdownTitle.addEventListener('click', function (e) {
+        // باش ما يتسكرش nav فالموبايل
+        e.stopPropagation();
+        dropdown.classList.toggle('active');
+    });
+});
+</script>
+
 </header>
